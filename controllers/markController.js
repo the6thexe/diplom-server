@@ -21,6 +21,19 @@ class MarkController {
         return res.json(m)
     }
 
+    async getAllStudentMarks(req, res) {
+        const { id } = req.params
+        const marks = await Mark.findAll({
+            where: {
+                studentId: id,
+            },
+            include: [
+                { model: Discipline }
+            ]
+        })
+        return res.json(marks)
+    }
+
     async deleteOne(req, res) {
         const { id } = req.params
         Mark.destroy({

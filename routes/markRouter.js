@@ -6,6 +6,7 @@ const checkRole = require('../middleware/checkRoleMiddleware')
 router.post('/', checkRole('admin'),  MarkController.create)
 router.get('/', MarkController.getAll)
 router.get('/:id', MarkController.getOne)
+router.get('/studentMarks/:id', MarkController.getAllStudentMarks)
 router.delete('/:id', checkRole('admin'), MarkController.deleteOne)
 
 module.exports = router
