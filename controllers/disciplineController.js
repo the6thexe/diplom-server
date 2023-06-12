@@ -3,8 +3,8 @@ const ApiError = require('../error/ApiError')
 
 class DisciplineController {
     async create(req, res) {
-        const { name, groupId } = req.body
-        const discipline = await Discipline.create({ name, groupId })
+        const { name, groupId, teacherId } = req.body
+        const discipline = await Discipline.create({ name, groupId, teacherId })
         return res.json(discipline)
     }
 

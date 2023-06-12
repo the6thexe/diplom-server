@@ -3,7 +3,7 @@ const router = new Router()
 const MarkController = require('../controllers/markController')
 const checkRole = require('../middleware/checkRoleMiddleware')
 
-router.post('/', checkRole('admin', 'teacher'),  MarkController.create)
+router.post('/', checkRole('admin'),  MarkController.create)
 router.get('/', MarkController.getAll)
 router.get('/:id', MarkController.getOne)
 router.get('/studentMarks/:id', MarkController.getAllStudentMarks)
