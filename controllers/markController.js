@@ -1,4 +1,4 @@
-const { Mark } = require('../models/models')
+const { Mark, Discipline } = require('../models/models')
 
 
 class MarkController {

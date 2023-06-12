@@ -27,7 +27,7 @@ const Teacher = sequelize.define('teacher', {
     id: { type: DataTypes.INTEGER, primaryKey: true, autoIncrement: true },
     name: { type: DataTypes.STRING, unique: true, allowNull: false },
     login: { type: DataTypes.STRING, unique: true, },
-    password: { type: DataTypes.STRING, unique: true, },
+    password: { type: DataTypes.STRING, unique: false, },
 })
 
 const Discipline = sequelize.define('discipline', {
@@ -66,6 +66,9 @@ StudentInfo.belongsTo(Student)
 
 Discipline.hasMany(Mark)
 Mark.belongsTo(Discipline)
+
+Group.hasMany(Discipline)
+Discipline.belongsTo(Group)
 
 module.exports = {
     User,
