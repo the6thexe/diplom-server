@@ -1,7 +1,7 @@
 const { Sequelize } = require("sequelize")
 
 module.exports = new Sequelize(
-    "railway",
+    /*"railway",
     "postgres",
     "FZrs08rNjRMn8XFq5hqc",
     {
@@ -9,4 +9,13 @@ module.exports = new Sequelize(
         host: "containers-us-west-4.railway.app",
         port: "7548"
     }
+    */
+   process.env.DB_NAME,
+   process.env.DB_USER,
+   process.env.DB_PASSWORD,
+   {
+    dialect: 'postgres',
+    host: process.env.DB_HOST,
+    port: process.env.DB_PORT
+   }
 ) 

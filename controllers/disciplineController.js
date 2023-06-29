@@ -1,4 +1,4 @@
-const { Discipline } = require('../models/models')
+const { Discipline, Group } = require('../models/models')
 const ApiError = require('../error/ApiError')
 
 class DisciplineController {
@@ -19,6 +19,19 @@ class DisciplineController {
             { where: { id } },
         )
         return res.json(discepline)
+    }
+
+    async getAllTeacherDisciplines(req, res) {
+        const { id } = req.params
+        const disciplines = await Discipline.findAll({
+            where: {
+                teacherId: id,
+            },
+            include: [
+                {model: Group}
+            ]
+        })
+        return res.json(disciplines)
     }
     
     async deleteOne(req, res) {
